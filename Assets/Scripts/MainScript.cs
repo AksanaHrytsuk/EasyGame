@@ -10,6 +10,7 @@ public class MainScript : MonoBehaviour
     public Text _points;
     private LoaderScene _loaderScene;
     private ItemScript _itemScript;
+    private int addSpeed = 0;
     
     
     [Header("Config Parameters")]
@@ -31,7 +32,8 @@ public class MainScript : MonoBehaviour
             Vector3 position = new Vector3(Random.Range(-6, 7), 3, 2);
             int rand = Random.Range(0, food.Count);
             GameObject newItem = Instantiate(food[rand], position, Quaternion.identity);
-            Vector3 force = new Vector3(0, Random.Range(-400, 0), 0);
+            addSpeed -= 50;
+            Vector3 force = new Vector3(0, Random.Range(-400+addSpeed, addSpeed), 0);
             newItem.GetComponent<Rigidbody2D>().AddForce(force);
         }
     }
