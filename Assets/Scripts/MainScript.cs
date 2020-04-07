@@ -5,18 +5,16 @@ using UnityEngine.UI;
 public class MainScript : MonoBehaviour
 {
     [Header("UI Elements")]
-    
     public Text _lives;
     public Text _points;
+    
+    [Header("Config Parameters")]
+    public int maxLives ;
+    public int addPoints;
+    
     private LoaderScene _loaderScene;
     private ItemScript _itemScript;
     private int addSpeed = 0;
-    
-    
-    [Header("Config Parameters")]
-    
-    public int maxLives ;
-    public int addPoints;
 
     public List<GameObject> food;
 
@@ -39,9 +37,6 @@ public class MainScript : MonoBehaviour
     }
     public void ItemDown()
     {
-        
-        _itemScript = FindObjectOfType<ItemScript>();
-        
         maxLives--;
         _lives.text = "Lives: " + maxLives;
         Debug.Log("CollisionEnterWall");
@@ -51,10 +46,8 @@ public class MainScript : MonoBehaviour
             _loaderScene.LoadNextSceneByName("Game Over");
         }
     }
-
     public void CountPoints(int score)
     {
-        _lives.text = "Lives: " + maxLives;
         addPoints += score;
         _points.text = "Points: " + addPoints;
     }
