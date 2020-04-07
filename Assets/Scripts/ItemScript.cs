@@ -8,6 +8,7 @@ public class ItemScript : MonoBehaviour
    
     public int scorePoints;
     private MainScript pointsControl;
+    public bool enemy;
     
     public AudioClip foodSound;
     // public GameObject effectSound;
@@ -18,7 +19,11 @@ public class ItemScript : MonoBehaviour
         {
             AudioSource audio = FindObjectOfType<AudioSource>();
             audio.PlayOneShot(foodSound);
-
+            if (enemy)
+            {
+                MainScript script = FindObjectOfType<MainScript>();
+                script.ItemDown();
+            }
             pointsControl = FindObjectOfType<MainScript>();
             pointsControl.CountPoints(scorePoints);
         }
