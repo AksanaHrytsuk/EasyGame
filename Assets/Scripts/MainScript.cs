@@ -30,7 +30,9 @@ public class MainScript : MonoBehaviour
         {
             Vector3 position = new Vector3(Random.Range(-6, 7), 3, 2);
             int rand = Random.Range(0, food.Count);
-            Instantiate(food[rand], position, Quaternion.identity);
+            GameObject newItem = Instantiate(food[rand], position, Quaternion.identity);
+            Vector3 force = new Vector3(0, Random.Range(-400, 0), 0);
+            newItem.GetComponent<Rigidbody2D>().AddForce(force);
         }
     }
     public void ItemDown()
