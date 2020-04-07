@@ -14,7 +14,7 @@ public class MainScript : MonoBehaviour
     
     [Header("Config Parameters")]
     
-    public int maxLives = 10;
+    public int maxLives ;
     public int addPoints;
 
     public List<GameObject> food;
@@ -45,7 +45,7 @@ public class MainScript : MonoBehaviour
     }
     public void ItemDown()
     {
-        _loaderScene = FindObjectOfType<LoaderScene>();
+        
         _itemScript = FindObjectOfType<ItemScript>();
         
         maxLives--;
@@ -53,6 +53,7 @@ public class MainScript : MonoBehaviour
         Debug.Log("CollisionEnterWall");
         if (maxLives == 0)
         {
+            _loaderScene = new LoaderScene();
             _loaderScene.LoadNextSceneByName("Game Over");
         }
     }
