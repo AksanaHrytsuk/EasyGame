@@ -18,17 +18,7 @@ public class MainScript : MonoBehaviour
     public int addPoints;
 
     public List<GameObject> food;
-    
-    // private void Awake()
-    // {
-    //     MainScript [] pointsList = FindObjectsOfType<MainScript>();
-    //     if (pointsList.Length > 1)
-    //     {
-    //         gameObject.SetActive(false);
-    //         Destroy(gameObject);
-    //     }
-    //     DontDestroyOnLoad(this.gameObject);
-    // }
+
     private void Start()
     {
         InvokeRepeating("CreateItem", 0, 1);

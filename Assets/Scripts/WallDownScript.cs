@@ -13,13 +13,6 @@ public class WallDownScript : MonoBehaviour
         {
             Debug.Log("Destroy items");
             _mainScript.ItemDown();
-            
-            // Destroy(gameObject);
         }
-        // else
-        // {
-        //     Debug.Log(gameObject);
-        //     Destroy(gameObject);
-        // }
     }
 }

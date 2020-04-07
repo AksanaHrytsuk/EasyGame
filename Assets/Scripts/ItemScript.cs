@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    //public int hitPoint;
+   
     public int scorePoints;
-
-    public Sprite[] images;
-    public AudioClip foodSound;
-    // public GameObject effectSound;
     private MainScript pointsControl;
     
+    public AudioClip foodSound;
+    // public GameObject effectSound;
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Basket"))

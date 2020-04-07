@@ -8,7 +8,6 @@ public class MusicPlayer : MonoBehaviour
     private void Awake()
     {
         MusicPlayer[] pointsList = FindObjectsOfType<MusicPlayer>();
-        // Debug.Log(pointsList.Length);
         if (pointsList.Length > 1)
         {
             gameObject.SetActive(false);

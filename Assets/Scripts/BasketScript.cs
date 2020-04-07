@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BasketScript : MonoBehaviour
 {
@@ -9,11 +6,6 @@ public class BasketScript : MonoBehaviour
     public  float minX = -8f;
 
     public  float maxX = 8f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void Update()
     {
@@ -26,7 +18,6 @@ public class BasketScript : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         // позиция мыши в координатах игрового мира
         float mouseX = mouseWorldPos.x;
-        //Debug.Log("mousePos: " + mousePos + "mousWorldPos" + mouseWorldPos);
         float clampedMouseX = Mathf.Clamp(mouseX, minX, maxX);
         float platformY = transform.position.y;
         transform.position = new Vector3(clampedMouseX, platformY, 2);
