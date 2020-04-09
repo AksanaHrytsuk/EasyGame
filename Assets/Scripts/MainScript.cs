@@ -22,7 +22,7 @@ public class MainScript : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-        InvokeRepeating("CreateItem", createPosition.position.y, createPosition.position.z);
+        InvokeRepeating("CreateItem", 0.5f, 1);
     }
 
     private void CreateItem()
