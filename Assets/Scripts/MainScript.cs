@@ -7,6 +7,7 @@ public class MainScript : MonoBehaviour
     [Header("UI Elements")]
     public Text _lives;
     public Text _points;
+    public Transform createPosition;
     
     [Header("Config Parameters")]
     public int maxLives ;
@@ -20,7 +21,8 @@ public class MainScript : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("CreateItem", 0, 1);
+        DontDestroyOnLoad(gameObject);
+        InvokeRepeating("CreateItem", createPosition.position.y, createPosition.position.z);
     }
 
     private void CreateItem()
@@ -30,8 +32,8 @@ public class MainScript : MonoBehaviour
             Vector3 position = new Vector3(Random.Range(-6, 7), 3, 2);
             int rand = Random.Range(0, food.Count);
             GameObject newItem = Instantiate(food[rand], position, Quaternion.identity);
-            addSpeed -= 50;
-            Vector3 force = new Vector3(0, Random.Range(-400+addSpeed, addSpeed), 0);
+            addSpeed -= 20;
+            Vector3 force = new Vector3(0, Random.Range(addSpeed - 400, addSpeed), 0);
             newItem.GetComponent<Rigidbody2D>().AddForce(force);
         }
     }
@@ -42,7 +44,8 @@ public class MainScript : MonoBehaviour
         Debug.Log("CollisionEnterWall");
         if (maxLives == 0)
         {
-            _loaderScene = new LoaderScene();
+            _loaderScene = gameObject.AddComponent<LoaderScene>();
+            //_loaderScene = FindObjectOfType<LoaderScene>();
             _loaderScene.LoadNextSceneByName("Game Over");
         }
     }

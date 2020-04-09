@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
    
+   
     public int scorePoints;
     private MainScript pointsControl;
     public bool enemy;
