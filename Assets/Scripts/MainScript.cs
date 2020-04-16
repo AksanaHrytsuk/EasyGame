@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
 {
@@ -15,21 +17,35 @@ public class MainScript : MonoBehaviour
     
     private LoaderScene _loaderScene;
     private ItemScript _itemScript;
+    private AudioSource _audioSource;
     private int addSpeed = 0;
 
     public List<GameObject> food;
 
+    private void Awake()
+    {
+        MainScript[] mainScriptsList = FindObjectsOfType<MainScript>();
+        // Debug.Log(pointsList.Length);
+        if (mainScriptsList.Length > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        //DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
-        InvokeRepeating("CreateItem", createPosition.position.y, createPosition.position.z);
+        InvokeRepeating("CreateItem", 0.5f, 1);
     }
 
     private void CreateItem()
     {
         if (maxLives > 0)
         {
-            Vector3 position = new Vector3(Random.Range(-6, 7), 3, 2);
+            Vector3 position = new Vector3(Random.Range(-6, 7), createPosition.position.y, createPosition.position.z);
             int rand = Random.Range(0, food.Count);
             GameObject newItem = Instantiate(food[rand], position, Quaternion.identity);
             addSpeed -= 20;
@@ -41,7 +57,7 @@ public class MainScript : MonoBehaviour
     {
         maxLives--;
         _lives.text = "Lives: " + maxLives;
-        Debug.Log("CollisionEnterWall");
+        //Debug.Log("CollisionEnterWall");
         if (maxLives == 0)
         {
             _loaderScene = gameObject.AddComponent<LoaderScene>();
@@ -53,5 +69,10 @@ public class MainScript : MonoBehaviour
     {
         addPoints += score;
         _points.text = "Points: " + addPoints;
+    }
+
+    public void PlaySound(AudioClip sound)
+    {
+        _audioSource.PlayOneShot(sound);
     }
 }
