@@ -57,7 +57,7 @@ public class MainScript : MonoBehaviour
     {
         maxLives--;
         _lives.text = "Lives: " + maxLives;
-        //Debug.Log("CollisionEnterWall");
+ 
         if (maxLives == 0)
         {
             _loaderScene = gameObject.AddComponent<LoaderScene>();

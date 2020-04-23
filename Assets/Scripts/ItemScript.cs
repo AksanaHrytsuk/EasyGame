@@ -6,12 +6,12 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
     public int scorePoints;
-    private MainScript pointsControl;
     public bool enemy;
     public bool rotate;
     
     public AudioClip foodSound;
     
+    private MainScript pointsControl;
     private CameraRotationScript _cameraRotationScript;
 
     private void Start()
@@ -28,6 +28,7 @@ public class ItemScript : MonoBehaviour
             MainScript script = FindObjectOfType<MainScript>();
             
             script.PlaySound(foodSound);
+            
             if (enemy)
             {
                 script.ItemDown();

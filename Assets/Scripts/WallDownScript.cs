@@ -9,6 +9,7 @@ public class WallDownScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _mainScript = FindObjectOfType<MainScript>();
+        
         if (collision.gameObject.CompareTag("Food"))
         {
             Debug.Log("Destroy items");
