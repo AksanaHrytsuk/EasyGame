@@ -18,7 +18,7 @@ public class MainScript : MonoBehaviour
     private LoaderScene _loaderScene;
     private ItemScript _itemScript;
     private AudioSource _audioSource;
-    private int addSpeed = 0;
+    private int addSpeed;
 
     public List<GameObject> food;
 
